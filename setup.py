@@ -25,17 +25,18 @@ try:
 except ImportError:
     from distutils.core import setup
 
-with io.open(os.path.join("nlp", "__init__.py"), "rt", encoding='utf-8') as f:
+with io.open(os.path.join("nlp_examples", "__init__.py"), "rt", encoding='utf-8') as f:
     SDK_VERSION = re.search(r"SDK_VERSION = b'(.*?)'", f.read()).group(1)
 
-with io.open(os.path.join("nlp/environments", "requirements.txt"), "rt", encoding='utf-8') as f:
+with io.open(os.path.join("nlp_examples/environments", "requirements.txt"), "rt", encoding='utf-8') as f:
     REQUIRED_PACKAGES = f.read()
 
 setup(
     name='nlp_examples',
     version=SDK_VERSION,
     install_requires=REQUIRED_PACKAGES,
-    packages=['nlp'],
+    packages=['nlp_examples',
+              'nlp_examples.dl',],
     platforms="any",
     python_requires='>=3.7',
 
